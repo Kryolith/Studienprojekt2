@@ -14,6 +14,7 @@ import org.jdom2.Document;
 import org.jdom2.Element; 
 import org.jdom2.JDOMException; 
 import org.jdom2.input.SAXBuilder; 
+import studienprojekt.Configuration;
 
 
 /**
@@ -36,18 +37,23 @@ public class RuleParser
 
             Element ruleRootElement = ruleXML.getRootElement();  
             
-            Element properties = ruleRootElement.getChild("properties");
-            ArrayList<Element> propertiesChildren = (ArrayList<Element>) properties.getChildren();
+            //Element properties = ruleRootElement.getChild("properties");
+            //ArrayList<Element> propertiesChildren = (ArrayList<Element>) properties.getChildren();
+            
+            Configuration config = new Configuration();
+            config.load(ruleXML);
+            
+            ruleObject.setConfiguration(config);
             
             Element tagList = ruleRootElement.getChild("taglist");
             ArrayList<Element> tagListChildren = (ArrayList<Element>) tagList.getChildren();
             
-            for (int i = 0; i < propertiesChildren.size(); i++)
+            /*for (int i = 0; i < propertiesChildren.size(); i++)
 			{
             	String key = propertiesChildren.get(i).getName();
             	String value = propertiesChildren.get(i).getValue();
             	ruleObject.addProperty(key, value);
-			}
+			}*/
             
             for (int i = 0; i < tagListChildren.size(); i++)
 			{
