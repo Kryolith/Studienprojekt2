@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<properties>
+		<property>
+			<key>path:rules</key>
+			<value>rules/</value>
+		</property>
+		<property>
+			<key>path:results</key>
+			<value>results/</value>
+		</property>
+		<property>
+			<key>path:temp</key>
+			<value>temp/</value>
+		</property>
+		<property>
+			<key>path:templates</key>
+			<value>templates/</value>
+		</property>
+		<property>
+			<key>path:inputfile</key>
+			<value>Testdatensatz/data.txt</value>
+		</property>
+	</properties>
+</config>

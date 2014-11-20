@@ -3,6 +3,7 @@ package studienprojekt.rules;
 import studienprojekt.rules.data.Tag;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import studienprojekt.osm.OSMCoordinate;
@@ -13,10 +14,12 @@ public class Rule
 {
     
     private Map<String, String> properties;
-    private ArrayList<Tag> tagList = new ArrayList<Tag>();
+    private ArrayList<Tag> tagList;
     
 	public Rule()
 	{
+            this.tagList = new ArrayList<>();
+            this.properties = new HashMap<>();
 	}
 	
 	public void addProperty(String key, String value)
