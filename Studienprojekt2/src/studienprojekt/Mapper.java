@@ -1,5 +1,6 @@
 package studienprojekt;
 
+import studienprojekt.rules.RuleManager;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;

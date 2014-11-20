@@ -1,6 +1,5 @@
 package studienprojekt.rules;
 
-import studienprojekt.rules.data.Tag;
 
 import java.util.ArrayList;
 import java.util.HashMap;

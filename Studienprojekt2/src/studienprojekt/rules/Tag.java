@@ -1,4 +1,4 @@
-package studienprojekt.rules.data;
+package studienprojekt.rules;
 
 public class Tag
 {
