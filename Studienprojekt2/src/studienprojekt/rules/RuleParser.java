@@ -24,7 +24,7 @@ import org.jdom2.input.SAXBuilder;
  */
 public class RuleParser 
 {
-    public static Rule parseRule(File file)
+    public static Rule parseFile(File file)
     {
     	Document ruleXML = null; 
         File ruleFile = file;
@@ -60,10 +60,8 @@ public class RuleParser
 			}
 
 
-        } catch (JDOMException e) { 
-            e.printStackTrace(); 
-        } catch (IOException e) { 
-            e.printStackTrace(); 
+        } catch (JDOMException | IOException e) { 
+            System.out.println(e);
         } 
         
     	

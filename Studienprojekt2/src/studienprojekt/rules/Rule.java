@@ -3,7 +3,10 @@ package studienprojekt.rules;
 import studienprojekt.rules.data.Tag;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import studienprojekt.osm.OSMCoordinate;
+import studienprojekt.osm.OSMWay;
 
 
 public class Rule 
@@ -20,6 +23,11 @@ public class Rule
 	{
 		properties.put(key, value);
 	}
+        
+        public List<OSMWay> handle(OSMCoordinate coordinate) {
+            return null;
+        }
+        
     
     public String getValueOfProperty(String key)
     {

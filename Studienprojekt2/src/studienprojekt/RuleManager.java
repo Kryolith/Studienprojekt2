@@ -40,12 +40,12 @@ public class RuleManager {
             // Ansonsten parse sie neu
             try {
             rule = RuleParser.parseFile(new File("rules/" + ruleFilename));
-            } catch(ParserConfigurationException | SAXException | IOException | ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+            } catch(Exception e) {
                 System.out.println(e);
             }
         }
         
-        return rule.handle(map, coordinate, sur);
+        return rule.handle(coordinate);
     }
     
     public String getRuleFilenameFromSUR(SpaceUsageRule sur) {
