@@ -10,6 +10,11 @@ public class OSMWay extends OSMElement
 	private List<OSMNode> wayComponents = new ArrayList();
 	private HashMap tags;
 	
+        
+        public OSMWay()
+        {
+            super();
+        }       
 	public OSMWay(String id)
 	{
 		super(id);	
@@ -44,6 +49,16 @@ public class OSMWay extends OSMElement
             
             return false;
         }
+        
+        public String getFirstNodeId()
+        {
+            return wayComponents.get(0).getId();
+        } 
+        
+        public String getLastNodeId()
+        {
+            return wayComponents.get(wayComponents.size() - 1).getId();
+        }  
         
 	@Override
 	public String toString()
