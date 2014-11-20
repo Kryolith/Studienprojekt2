@@ -5,7 +5,6 @@
  */
 package studienprojekt.rules;
 
-import studienprojekt.rules.data.Tag;
 
 import java.io.File;
 import java.io.IOException; 
