@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rule>
+  <properties type="studienprojekt.rules.data.PropertiesData">
+    <group>*</group>
+    <key>*</key>
+    <value>*</value>
+    <lengthfactor>1</lengthfactor>
+    <handler>default</handler>
+  </properties>
+  <tags>  
+  </tags>
+</rule>
