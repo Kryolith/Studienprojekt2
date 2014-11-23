@@ -44,7 +44,7 @@ public class Mapper {
         int datacount = Integer.parseInt(ifh.getNextLineArray().get(0));
         
         // Limitiere datacount für Testzwecke
-        datacount = datacount > 1 ? 1 : datacount;
+        datacount = datacount > 115 ? 115 : datacount;
         
         // OSMParser-Objekt erzeugen, damit mit der Map-API kommuniziert werden kann
         OSMParser osmParser = new OSMParser();
@@ -69,6 +69,11 @@ public class Mapper {
             
             // Parse die SpaceUsageRule aus Feld 3 der Zeile
             SpaceUsageRule currentSur = SpaceUsageRule.parseSpaceUsageRule(line.get(3));
+            
+ ///////////////////////// ZUM TESTEN: Nur die Smoking-Regel wird betrachtet /////////////////////////////////// 
+            if (!((currentSur.getRule()).equals("smoking")))
+                continue;
+///////////////////////// ENDE TESTSEQUENZ //////////////////////////////////////////////////////////////////////            
             
             // AUch zum Ergebnis-Objekt hinzufügen
             result.setSpaceUsageRule(currentSur);
