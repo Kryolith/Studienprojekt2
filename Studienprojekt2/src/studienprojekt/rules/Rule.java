@@ -49,4 +49,19 @@ public class Rule
     	return tagList.size();
     }
     
+    public boolean hasTagWithKey(String key) {
+        for(Tag tag : tagList) {
+            if(tag.getKey().equalsIgnoreCase(key))
+                return true;
+        }
+        return false;
+    }
+    
+    public Tag getTagWithKey(String key) {
+        for(Tag tag : tagList) {
+            if(tag.getKey().equalsIgnoreCase(key))
+                return tag;
+        }
+        return null;
+    }
 }
