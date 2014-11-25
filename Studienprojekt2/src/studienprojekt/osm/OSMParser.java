@@ -17,12 +17,14 @@ import org.xml.sax.SAXException;
 	 
 public class OSMParser {
     
+    
      private static List<OSMNode> nodes;
      private static double sufficientBigRadius;
      
-     public static OSMMap getOSMMap(OSMCoordinate surCoordinate, double radius) throws ParserConfigurationException, SAXException, IOException
+     public static OSMMap getOSMMap(OSMCoordinate surCoordinate, double radiusInM) throws ParserConfigurationException, SAXException, IOException
      { 
          OSMMap osmMap = new OSMMap();
+         double radius = radiusInM/1000;
          sufficientBigRadius = radius;
          
          do
