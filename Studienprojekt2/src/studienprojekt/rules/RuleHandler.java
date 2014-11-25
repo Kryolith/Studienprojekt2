@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import studienprojekt.Mapper;
-import studienprojekt.osm.OSMApiHandler;
 import studienprojekt.osm.OSMCoordinate;
 import studienprojekt.osm.OSMMap;
+import studienprojekt.osm.OSMParser;
 import studienprojekt.osm.OSMWay;
 
 /**
@@ -24,15 +24,17 @@ public class RuleHandler {
     
     public OSMWay handle(Rule rule, OSMCoordinate cood) {
         // Erstmal API-Handler besorgen (Singleton-Pattern)
-        OSMApiHandler api = OSMApiHandler.getInstance();
+        //OSMApiHandler api = OSMApiHandler.getInstance();
         
         // Radius aus den rule-properties laden (oder aus der config)
-        double range = Mapper.getInstance().getConfiguration().get("default:range", 5000);
+        double range = Double.parseDouble(Mapper.getInstance().getConfiguration().get("default:range", "5000"));
         if(rule.getConfiguration().has("range"))
             range = Double.parseDouble(rule.getConfiguration().get("range"));          
         
         // OSM-Map laden
-        OSMMap map = api.getMapByRadius(cood, range);
+        //OSMMap map = api.getMapByRadius(cood, range);
+        
+        OSMMap map = OSMParser.getOSMMap(cood, range);
         
         // Die Wege abfragen
         List<OSMWay> ways = map.getWays();
@@ -48,7 +50,7 @@ public class RuleHandler {
             Map<String, String> wayTags = way.getTags();
             
             // Anschließend die Tags innerhalb dieses Weges suchen
-            Map<String, String> wayInnerTags = way.getInnerTags(map); 
+            //Map<String, String> wayInnerTags = way.getInnerTags(map); 
             
             // Und diese in eine gemeinsame Liste mit den gewichteten Tags einfügen
             Map<String, Tag> tags = new HashMap();
@@ -61,13 +63,13 @@ public class RuleHandler {
               }  
             }
             
-            wayTagsKeys = wayInnerTags.keySet();
+            /*wayTagsKeys = wayInnerTags.keySet();
             for(String key : wayTagsKeys) {
               if(rule.hasTagWithKey(key)) {
                   Tag current = rule.getTagWithKey(key);
                   tags.put(current.getHash(), current);
               }  
-            }
+            }*/
             
             // Get Max Key weight
             double keyMaxWeight = 0;
