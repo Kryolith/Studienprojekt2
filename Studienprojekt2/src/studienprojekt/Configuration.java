@@ -16,7 +16,6 @@ public final class Configuration {
     private String configPath;
     
     public Configuration() {
-        
         this.properties = new HashMap();
         this.configPath = "";        
     }
@@ -44,19 +43,23 @@ public final class Configuration {
             SAXBuilder builder = new SAXBuilder();
             doc = builder.build(f);
             
-            Element root = doc.getRootElement(); 
-            
-            List<Element> new_properties = root.getChild("properties").getChildren("property");
-            
-            for(Element property : new_properties) {
-                String key = property.getChildText("key");
-                String value = property.getChildText("value");
-                
-                this.properties.put(key, value);
-            }
+            load(doc);
 
         } catch(JDOMException | IOException e) {
             System.out.println(e);
+        }
+    }
+    
+    public void load(Document doc) {
+        Element root = doc.getRootElement(); 
+
+        List<Element> new_properties = root.getChild("properties").getChildren("property");
+
+        for(Element property : new_properties) {
+            String key = property.getChildText("key");
+            String value = property.getChildText("value");
+
+            this.properties.put(key, value);
         }
     }
     

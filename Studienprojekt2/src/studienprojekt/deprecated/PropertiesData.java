@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package studienprojekt.rules.data;
+package studienprojekt.deprecated;
 
+import studienprojekt.deprecated.Data;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;

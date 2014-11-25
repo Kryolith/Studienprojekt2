@@ -1,12 +1,12 @@
-package studienprojekt.rules.data;
+package studienprojekt.rules;
 
 public class Tag
 {
 	private String key;
 	private String value;
-	private int weight;
+	private double weight;
 	
-	public Tag(String key, String value, int weight)
+	public Tag(String key, String value, double weight)
 	{
 		this.key = key;
 		this.value = value;
@@ -21,8 +21,12 @@ public class Tag
 	{
 		return value;
 	}
-	public int getWeight()
+	public double getWeight()
 	{
 		return weight;
 	}
+        
+        public String getHash() {
+            return this.key + "=" + this.value;
+        }
 }
