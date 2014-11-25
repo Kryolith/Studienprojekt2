@@ -1,6 +1,5 @@
 package studienprojekt.osm;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
