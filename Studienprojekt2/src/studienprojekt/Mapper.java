@@ -13,16 +13,28 @@ import studienprojekt.osm.OSMParser;
 
 public class Mapper {    
     
-    Configuration config;
-    RuleManager ruleManager;
+    private Configuration config;
+    private RuleManager ruleManager;
+    private static Mapper instance = null;
     
-    public Mapper() {
+    private Mapper() {
         this.config = new Configuration();
         this.ruleManager = new RuleManager();
     }
     
+    public static Mapper getInstance() {
+        if(instance == null)
+            instance = new Mapper();
+        
+        return instance;
+    }
+    
     public void initialize() {
         config.load();
+    }
+    
+    public Configuration getConfiguration() {
+        return this.config;
     }
     
     public void run() {
