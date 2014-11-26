@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package studienprojekt.rules.data;
+package studienprojekt.deprecated;
 
+import studienprojekt.deprecated.Data;
 import java.util.ArrayList;
 import java.util.List;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import studienprojekt.rules.data.PropertiesData;
+import studienprojekt.deprecated.PropertiesData;
 /**
  *
  * @author Sebastian

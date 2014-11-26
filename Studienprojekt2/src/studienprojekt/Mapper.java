@@ -1,5 +1,6 @@
 package studienprojekt;
 
+import studienprojekt.rules.RuleManager;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -12,16 +13,28 @@ import studienprojekt.osm.OSMParser;
 
 public class Mapper {    
     
-    Configuration config;
-    RuleManager ruleManager;
+    private Configuration config;
+    private RuleManager ruleManager;
+    private static Mapper instance = null;
     
-    public Mapper() {
+    private Mapper() {
         this.config = new Configuration();
         this.ruleManager = new RuleManager();
     }
     
+    public static Mapper getInstance() {
+        if(instance == null)
+            instance = new Mapper();
+        
+        return instance;
+    }
+    
     public void initialize() {
         config.load();
+    }
+    
+    public Configuration getConfiguration() {
+        return this.config;
     }
     
     public void run() {
@@ -44,7 +57,7 @@ public class Mapper {
         int datacount = Integer.parseInt(ifh.getNextLineArray().get(0));
         
         // Limitiere datacount für Testzwecke
-        datacount = datacount > 115 ? 115 : datacount;
+        datacount = datacount > 1 ? 1 : datacount;
         
         // OSMParser-Objekt erzeugen, damit mit der Map-API kommuniziert werden kann
         OSMParser osmParser = new OSMParser();
@@ -69,11 +82,6 @@ public class Mapper {
             
             // Parse die SpaceUsageRule aus Feld 3 der Zeile
             SpaceUsageRule currentSur = SpaceUsageRule.parseSpaceUsageRule(line.get(3));
-            
- ///////////////////////// ZUM TESTEN: Nur die Smoking-Regel wird betrachtet /////////////////////////////////// 
-            if (!((currentSur.getRule()).equals("smoking")))
-                continue;
-///////////////////////// ENDE TESTSEQUENZ //////////////////////////////////////////////////////////////////////            
             
             // AUch zum Ergebnis-Objekt hinzufügen
             result.setSpaceUsageRule(currentSur);

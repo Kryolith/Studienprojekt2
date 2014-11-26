@@ -1,4 +1,4 @@
-package studienprojekt;
+package studienprojekt.rules;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
+import studienprojekt.SpaceUsageRule;
 import studienprojekt.osm.OSMCoordinate;
 import studienprojekt.osm.OSMMap;
 import studienprojekt.osm.OSMWay;

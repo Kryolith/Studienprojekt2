@@ -1,40 +1,37 @@
 package studienprojekt.rules;
 
-import studienprojekt.rules.data.Tag;
+import studienprojekt.rules.Tag;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import studienprojekt.Configuration;
 import studienprojekt.osm.OSMCoordinate;
 import studienprojekt.osm.OSMWay;
 
 
 public class Rule 
 {
-    
-    private Map<String, String> properties;
+    private Configuration config;
     private ArrayList<Tag> tagList;
     
-	public Rule()
-	{
-            this.tagList = new ArrayList<>();
-            this.properties = new HashMap<>();
-	}
-	
-	public void addProperty(String key, String value)
-	{
-		properties.put(key, value);
-	}
-        
-        public List<OSMWay> handle(OSMCoordinate coordinate) {
-            return null;
-        }
+    public Rule()
+    {
+        this.tagList = new ArrayList<>();
+    }
+
+    public List<OSMWay> handle(OSMCoordinate coordinate) {
+        return null;
+    }
+    
+    public Configuration getConfiguration() {
+        return this.config;
+    }
         
     
-    public String getValueOfProperty(String key)
-    {
-    	return properties.get(key); 
+    public void setConfiguration(Configuration config){
+        this.config = config;
     }
     
     public void addTag(Tag tag)
@@ -43,13 +40,28 @@ public class Rule
     }
     
     public Tag getTag(int i)
-	{
-		return tagList.get(i);
-	}
+    {
+            return tagList.get(i);
+    }
     
     public int sizeTagList()
     {
     	return tagList.size();
     }
     
+    public boolean hasTagWithKey(String key) {
+        for(Tag tag : tagList) {
+            if(tag.getKey().equalsIgnoreCase(key))
+                return true;
+        }
+        return false;
+    }
+    
+    public Tag getTagWithKey(String key) {
+        for(Tag tag : tagList) {
+            if(tag.getKey().equalsIgnoreCase(key))
+                return tag;
+        }
+        return null;
+    }
 }
