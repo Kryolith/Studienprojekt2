@@ -53,7 +53,8 @@ public class RuleHandler {
         // Die Wege abfragen
         List<OSMWay> ways = map.getWays();
         
-        System.out.println(ways.get(0));
+        for(OSMWay way : ways)
+            System.out.println(way);
         
         // Die Wege nacheinander durchgehen, dabei direkt den höchstwertigen Weg speichern
         double max_value = 0;
@@ -103,6 +104,8 @@ public class RuleHandler {
             
             // Finale Wertung errechnen
             double value = keyMaxWeight * wayWeight;
+            
+            
             
             // Direkt als besten weg setzen wenn ers ist
             if(value > max_value) {
