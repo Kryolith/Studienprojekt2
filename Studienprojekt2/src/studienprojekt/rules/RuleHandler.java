@@ -30,9 +30,10 @@ public class RuleHandler {
         //OSMApiHandler api = OSMApiHandler.getInstance();
         
         // Radius aus den rule-properties laden (oder aus der config)
-        double range = Double.parseDouble(Mapper.getInstance().getConfiguration().get("default:range", "5000"));
+        double range = Double.parseDouble(Mapper.getInstance().getConfiguration().get("default:range", "25"));
         if(rule.getConfiguration().has("range"))
-            range = Double.parseDouble(rule.getConfiguration().get("range"));          
+            range = Double.parseDouble(rule.getConfiguration().get("range")); 
+        
         
         // OSM-Map laden
         //OSMMap map = api.getMapByRadius(cood, range);

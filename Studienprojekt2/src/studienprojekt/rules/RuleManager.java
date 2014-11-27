@@ -20,13 +20,15 @@ public class RuleManager {
     
     private Map<String, Rule> rules;
     private RuleParser ruleParser;
+    private RuleHandler ruleHandler;
     
     public RuleManager() {
         this.rules = new HashMap();
         this.ruleParser = new RuleParser();
+        this.ruleHandler = new RuleHandler();
     }
     
-    public List<OSMWay> handle(OSMCoordinate coordinate, SpaceUsageRule sur) throws Exception {
+    public OSMWay handle(OSMCoordinate coordinate, SpaceUsageRule sur) throws Exception {
         
         // SpaceUsageRule zu einzigartigen "Key" umwandeln
         String ruleFilename = getRuleFilenameFromSUR(sur);
@@ -40,13 +42,13 @@ public class RuleManager {
         }else{
             // Ansonsten parse sie neu
             try {
-            rule = RuleParser.parseFile(new File("rules/" + ruleFilename));
+                rule = RuleParser.parseFile(new File("rules/" + ruleFilename));
             } catch(Exception e) {
                 System.out.println(e);
             }
         }
         
-        return rule.handle(coordinate);
+        return ruleHandler.handle(rule, coordinate);
     }
     
     public String getRuleFilenameFromSUR(SpaceUsageRule sur) {
