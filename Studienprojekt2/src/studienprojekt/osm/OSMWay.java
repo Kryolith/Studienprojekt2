@@ -170,14 +170,14 @@ public class OSMWay extends OSMElement
             lat_1 = wayComponents.get(0).getNodeCoordinate().getLatitude();
             lon_1 = wayComponents.get(0).getNodeCoordinate().getLongitude();
             x_1 = lon_1 * 111.31832 * Math.cos(lat_1);
-            y_1 = lon_1 * 111.31832;
+            y_1 = lat_1 * 111.31832;
             point_1 = new Point2D.Double();
             point_1.setLocation(x_1, y_1);
 
             lat_2 = wayComponents.get(1).getNodeCoordinate().getLatitude();
             lon_2 = wayComponents.get(1).getNodeCoordinate().getLongitude();
             x_2 = lon_2 * 111.31832 * Math.cos(lat_2);
-            y_2 = lon_2 * 111.31832;
+            y_2 = lat_2 * 111.31832;
             point_2 = new Point2D.Double();
             point_2.setLocation(x_2, y_2);
             
@@ -199,7 +199,7 @@ public class OSMWay extends OSMElement
                 lat_2 = wayComponents.get(i).getNodeCoordinate().getLatitude();
                 lon_2 = wayComponents.get(i).getNodeCoordinate().getLongitude();
                 x_2 = lon_2 * 111.31832 * Math.cos(lat_2);
-                y_2 = lon_2 * 111.31832;
+                y_2 = lat_2 * 111.31832;
                 point_2 = new Point2D.Double();
                 point_2.setLocation(x_2, y_2);
                 
