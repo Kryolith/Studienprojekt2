@@ -1,14 +1,7 @@
 package studienprojekt.rules;
 
-import studienprojekt.rules.Tag;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import studienprojekt.Configuration;
-import studienprojekt.osm.OSMCoordinate;
-import studienprojekt.osm.OSMWay;
 
 
 public class Rule 

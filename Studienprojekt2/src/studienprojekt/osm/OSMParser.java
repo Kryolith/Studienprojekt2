@@ -51,8 +51,8 @@ public class OSMParser {
                 
         OSMMap osmMap = new OSMMap();
 
-        nodes = new ArrayList<OSMNode>();
-        List<OSMWay> ways = new ArrayList<OSMWay>();
+        nodes = new ArrayList<>();
+        List<OSMWay> ways = new ArrayList<>();
 
         //Load the input XML document, parse it and return an instance of the
         //Document class.
@@ -139,7 +139,7 @@ public class OSMParser {
                     Node ndNode = null;
                     String key = "";
                     String value = "";
-                    HashMap<String,String> tagMap = new HashMap<String,String>();
+                    HashMap<String,String> tagMap = new HashMap<>();
 
                     //System.out.println(tagNode);
                    // System.out.println(" ");
@@ -295,7 +295,7 @@ public class OSMParser {
             nodeLongitude = Double.parseDouble((node.getAttributes().getNamedItem("lon")).getTextContent());
             nodeLatitude = Double.parseDouble((node.getAttributes().getNamedItem("lat")).getTextContent());
             //System.out.println(nodeLongitude);
-            nodeCoordinate = new OSMCoordinate(nodeLongitude, nodeLatitude);
+            nodeCoordinate = new OSMCoordinate(nodeLatitude, nodeLongitude);
             osmNode.setNodeCoordinate(nodeCoordinate);
 
             //System.out.println("ID = " + osmNode.getId());

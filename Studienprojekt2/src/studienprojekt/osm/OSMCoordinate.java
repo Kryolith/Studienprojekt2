@@ -50,7 +50,7 @@ public class OSMCoordinate
         
         @Override
         public String toString() {
-            return "( " + this.longitude + " | " + this.latitude + " )";
+            return "( " + this.latitude + " | " + this.longitude + " )";
         }
 	
 	
