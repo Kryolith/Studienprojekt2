@@ -25,14 +25,27 @@ public class OSMWay extends OSMElement
 		super(id);	
 	}
         
-        public Polygon getPolygonRepresentation()
+       // Diese Methode bildet einen (geschlossenen) Way - also ein OSM-Polygon -
+        // auf ein Objekt der Klasse java.awt.Polygon ab.
+        public Polygon getPolygonProjection()
         {
-            Polygon polygonRepresentation = new Polygon();
             
+            int [] x_coordinates = new int[wayComponents.size()]; 
+            int [] y_coordinates = new int[wayComponents.size()]; 
             
+            double lat;
+            double lon;
             
-            return polygonRepresentation;
-        }        
+            for (int i = 0; i < wayComponents.size(); i++)
+            {
+                lat = wayComponents.get(i).getNodeCoordinate().getLatitude();
+                lon = wayComponents.get(i).getNodeCoordinate().getLongitude();
+                x_coordinates[i] = (int)(lon * 111.31832 * Math.cos(lat) * 1000000);
+                y_coordinates[i] = (int)(lat * 111.31832 * 1000000);
+            }    
+            return new Polygon(x_coordinates, y_coordinates, wayComponents.size());
+        }
+        
         
 	public List<OSMNode> getWayComponents() 
 	{
@@ -66,12 +79,27 @@ public class OSMWay extends OSMElement
         
         public boolean wrapsNode(OSMNode node)
         {
-            return false;
+            Polygon polygonProjection = this.getPolygonProjection();
+            
+            double lat = node.getNodeCoordinate().getLatitude();
+            double lon = node.getNodeCoordinate().getLongitude();
+            double x, y;
+            
+            x = lon * 111.31832 * Math.cos(lat) * 1000000;
+            y = lat * 111.31832 * 1000000;
+            
+            return polygonProjection.contains(x, y);
         }
+        
         
         public boolean wraps(OSMWay way)
         {
-            return false;
+            for (OSMNode node : way.getWayComponents())
+            {
+                if (!(this.wrapsNode(node)))
+                    return false;
+            }    
+            return true;
         }        
         
         public String getFirstNodeId()
