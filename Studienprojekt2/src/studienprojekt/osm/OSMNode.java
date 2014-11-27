@@ -55,7 +55,7 @@ public class OSMNode extends OSMElement{
 			}
 		}
 		
-		nodeDescription = " ID = " + id + "\n lon = " + lon + "\n lat = " + lat + "\n\n" + allTags;
+		nodeDescription = " ID = " + id + "\n lon = " + lat + "\n lat = " + lon + "\n\n" + allTags;
 		
 		return nodeDescription;
 	}

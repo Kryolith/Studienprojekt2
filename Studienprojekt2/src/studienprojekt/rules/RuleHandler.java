@@ -48,8 +48,12 @@ public class RuleHandler {
             System.out.println(ex);
         }
         
+        
+        
         // Die Wege abfragen
         List<OSMWay> ways = map.getWays();
+        
+        System.out.println(ways.get(0));
         
         // Die Wege nacheinander durchgehen, dabei direkt den höchstwertigen Weg speichern
         double max_value = 0;
