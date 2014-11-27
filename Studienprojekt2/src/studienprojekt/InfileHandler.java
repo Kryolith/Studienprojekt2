@@ -16,6 +16,11 @@ public class InfileHandler {
     private BufferedReader bufferedReader;
     
     public InfileHandler(String filePath) {
+        
+        
+        System.out.println("Bin DRIN!!!");
+        
+        
         try {
             this.fileReader = new FileReader(filePath);
             this.bufferedReader = new BufferedReader(this.fileReader);

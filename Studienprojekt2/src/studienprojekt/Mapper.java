@@ -10,12 +10,15 @@ import studienprojekt.osm.OSMCoordinate;
 import studienprojekt.osm.OSMMap;
 import studienprojekt.osm.OSMParser;
 
-public class Mapper {    
-    
+public class Mapper {      
     Configuration config;
     RuleManager ruleManager;
     
     public Mapper() {
+        
+        
+        System.out.println("Bin im Mapper JUNGE!!!");
+        
         this.config = new Configuration();
         this.ruleManager = new RuleManager();
     }
