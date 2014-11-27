@@ -2,6 +2,7 @@ package studienprojekt.osm;
 
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
+import java.awt.Polygon;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -23,7 +24,16 @@ public class OSMWay extends OSMElement
 	{
 		super(id);	
 	}
-
+        
+        public Polygon getPolygonRepresentation()
+        {
+            Polygon polygonRepresentation = new Polygon();
+            
+            
+            
+            return polygonRepresentation;
+        }        
+        
 	public List<OSMNode> getWayComponents() 
 	{
 		return wayComponents;
@@ -53,6 +63,16 @@ public class OSMWay extends OSMElement
             
             return false;
         }
+        
+        public boolean wrapsNode(OSMNode node)
+        {
+            return false;
+        }
+        
+        public boolean wraps(OSMWay way)
+        {
+            return false;
+        }        
         
         public String getFirstNodeId()
         {

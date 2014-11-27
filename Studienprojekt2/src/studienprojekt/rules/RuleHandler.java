@@ -5,10 +5,13 @@
  */
 package studienprojekt.rules;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import javax.xml.parsers.ParserConfigurationException;
+import org.xml.sax.SAXException;
 import studienprojekt.Mapper;
 import studienprojekt.osm.OSMCoordinate;
 import studienprojekt.osm.OSMMap;
@@ -34,7 +37,15 @@ public class RuleHandler {
         // OSM-Map laden
         //OSMMap map = api.getMapByRadius(cood, range);
         
-        OSMMap map = OSMParser.getOSMMap(cood, range);
+        OSMMap map = new OSMMap();
+        try
+        {    
+             map = OSMParser.getOSMMap(cood, range);
+        }
+        catch (ParserConfigurationException | SAXException | IOException ex)
+        {
+            System.out.println(ex);
+        }
         
         // Die Wege abfragen
         List<OSMWay> ways = map.getWays();
