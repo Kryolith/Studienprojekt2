@@ -86,6 +86,7 @@ public class Mapper {
             // AUch zum Ergebnis-Objekt hinzufügen
             result.setSpaceUsageRule(currentSur);
             
+            /*
             // Erstelle OSMMap-Objekt, dass die Gegend um die Koordinaten beschreibt
             OSMMap areaToCheck = null;
                         
@@ -95,19 +96,20 @@ public class Mapper {
             } catch (ParserConfigurationException | SAXException | IOException ex) {
                 System.out.println(ex);
             }
+            */
             
             // Falls erfolgreich weiter (ansonsten sollte eh ein Fehler ausgegeben worden sein, evtl ist die Bedingung hier überflüssig?!?)
-            if(areaToCheck != null) {
+            //if(areaToCheck != null) {
                 try {
                     // Gib die aktuellen Daten an den RegelManager weiter und speicher die Rückgabe im result-Objekt
-                    result.setOSMWays(this.ruleManager.handle(areaToCheck, surCoordinate, currentSur));
+                    result.setOSMWays(this.ruleManager.handle(surCoordinate, currentSur));
                 } catch (Exception ex) {
                     Logger.getLogger(Mapper.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
                 // Schlussendlich wird das Ergebnis noch abgespeichert über den OutfileHandler
                 ofh.saveData(result);
-            }
+            //}
         }        
     }
 }
