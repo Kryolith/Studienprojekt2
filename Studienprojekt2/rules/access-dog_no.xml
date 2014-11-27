@@ -1,51 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rule>
-  <!-- properties enthalten allgemeine Informationen zu der Regel -->
-  <properties type="studienprojekt.rules.data.PropertiesData">
-    <!-- Dateiname der aktuellen Datei -->
-    <filename>access-dogs_no.xml</filename>
-    <!-- SpaceUsageRule im "Rohformat" -->
-    <sur>access:dogs="no"</sur>
-    <!-- SpaceUsageRule Gruppe -->
-    <group>access</group>
-    <!-- SpaceUsageRule Schlüssel -->
-    <key>dogs</key>
-    <!-- SpaceUsageRule Wert -->
-    <value>no</value>
-    <!-- Längenfaktor für die Distanzfunktion -->
-    <lengthfactor>1</lengthfactor>
-    <!-- "RuleHandler" für später, um bei bestimmten Regeln auch auf Sonderfälle eingehen zu können 
-    Zum Beispiel für Regeln, die mehrere Polygone zusammenfügen sollen oder ähnliches -->
-    <handler>default</handler>
-  </properties>
-  <!-- Alle Tags, auf die die Regel Rücksicht nehmen soll -->
-  <handles type="studienprojekt.rules.data.TagsData">
-    <!-- Jeder Tag befindet sich innerhalb eines "tag"s -->
-    <tag>
-      <!-- Gruppe des Tags (Wird das überhaupt gebraucht?) -->
-      <group>*</group>
-      <!-- Schlüssel des Tags -->
-      <key>building</key>
-      <!-- Wert des Tags -->
-      <value>hotel</value>
-      <!-- Gewichtung dieses Tags -->
-      <weight>1</weight>
-    </tag>
-    <tag>
-      <group>*</group>
-      <key>building</key>
-      <value>*</value>
-      <value>yes</value>
-    </tag>
-  </handles>
-  <!-- Tags, die ein bestimmten Weg/bestimmtes Polygon direkt ausschließen -->
-  <!--<exclude type="excludeData">
-    <tag>
-      <! Selbes Format wie oben, hier am Beispiel von Sportstätten/Freizeitanlagen.
-        Generell dürften Hunde hier verboten sein, außer natürlich im Hundepark >
-      <group>*</group>
-      <key>leisure</key>
-      <value>dog_park</value>
-    </tag>
-  </exclude>-->
+	<properties>
+		<property>
+			<key>range</key>
+			<value>10.75</value>
+		</property>
+		<property>
+			<key>dog</key>
+			<value>big</value>
+		</property>
+	</properties>
+	<taglist>
+	  <tag>
+		<key>building</key>
+		<value>yes</value>
+		<weight>10</weight>
+	  </tag>
+	  <tag>
+		<key>building</key>
+		<value>retail</value>
+		<weight>20</weight>
+	  </tag>
+	  <tag>
+		<key>building</key>
+		<value>hotel</value>
+		<weight>20</weight>
+	  </tag>
+	</taglist>
 </rule>

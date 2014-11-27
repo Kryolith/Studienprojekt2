@@ -21,5 +21,9 @@
 			<key>path:inputfile</key>
 			<value>Testdatensatz/data.txt</value>
 		</property>
+		<property>
+			<key>default:range</key>
+			<value>50</value>
+		</property>
 	</properties>
 </config>
