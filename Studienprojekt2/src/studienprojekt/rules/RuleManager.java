@@ -26,7 +26,7 @@ public class RuleManager {
         this.ruleParser = new RuleParser();
     }
     
-    public List<OSMWay> handle(OSMMap map, OSMCoordinate coordinate, SpaceUsageRule sur) throws Exception {
+    public List<OSMWay> handle(OSMCoordinate coordinate, SpaceUsageRule sur) throws Exception {
         
         // SpaceUsageRule zu einzigartigen "Key" umwandeln
         String ruleFilename = getRuleFilenameFromSUR(sur);
