@@ -75,7 +75,7 @@ public class Mapper {
             result.setName(line.get(0));
             
             // Erstelle ein OSMCoordinate-Objekt mit den Koordinaten aus der Zeile
-            OSMCoordinate surCoordinate = new OSMCoordinate(Double.parseDouble(line.get(2)), Double.parseDouble(line.get(1)));
+            OSMCoordinate surCoordinate = new OSMCoordinate(Double.parseDouble(line.get(1)), Double.parseDouble(line.get(2)));
             
             // Setze Koordinaten im Ergebnisobjekt
             result.setOSMCoordinate(surCoordinate);
@@ -102,7 +102,7 @@ public class Mapper {
             //if(areaToCheck != null) {
                 try {
                     // Gib die aktuellen Daten an den RegelManager weiter und speicher die Rückgabe im result-Objekt
-                    result.setOSMWays(this.ruleManager.handle(surCoordinate, currentSur));
+                    result.setOSMWay(this.ruleManager.handle(surCoordinate, currentSur));
                 } catch (Exception ex) {
                     Logger.getLogger(Mapper.class.getName()).log(Level.SEVERE, null, ex);
                 }
