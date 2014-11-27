@@ -20,10 +20,6 @@ public class Rule
     {
         this.tagList = new ArrayList<>();
     }
-
-    public List<OSMWay> handle(OSMCoordinate coordinate) {
-        return null;
-    }
     
     public Configuration getConfiguration() {
         return this.config;

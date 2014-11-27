@@ -9,6 +9,7 @@ package studienprojekt.rules;
 import java.io.File;
 import java.io.IOException; 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.jdom2.Document; 
 import org.jdom2.Element; 
@@ -46,7 +47,7 @@ public class RuleParser
             ruleObject.setConfiguration(config);
             
             Element tagList = ruleRootElement.getChild("taglist");
-            ArrayList<Element> tagListChildren = (ArrayList<Element>) tagList.getChildren();
+            List<Element> tagListChildren = (List<Element>) tagList.getChildren();
             
             /*for (int i = 0; i < propertiesChildren.size(); i++)
 			{
@@ -56,13 +57,13 @@ public class RuleParser
 			}*/
             
             for (int i = 0; i < tagListChildren.size(); i++)
-			{
-            	String key = tagListChildren.get(i).getChild("key").getValue();
-	            String value = tagListChildren.get(i).getChild("value").getValue();
-	            int weight = Integer.parseInt(tagListChildren.get(i).getChild("weight").getValue());
-	            Tag aTag = new Tag(key, value, weight);
-	            ruleObject.addTag(aTag);
-			}
+            {
+                String key = tagListChildren.get(i).getChild("key").getValue();
+                String value = tagListChildren.get(i).getChild("value").getValue();
+                int weight = Integer.parseInt(tagListChildren.get(i).getChild("weight").getValue());
+                Tag aTag = new Tag(key, value, weight);
+                ruleObject.addTag(aTag);
+            }
 
 
         } catch (JDOMException | IOException e) { 

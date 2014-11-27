@@ -28,14 +28,14 @@ public class OutfileHandler {
         // Füge Name im Template ein
         tpl.replace("name", result.getName());
         
-        if(result.getOSMWays().size() > 1)
-            throw new UnsupportedOperationException("Kann derzeit nur einen Weg als Ergebnis speichern");
+        //if(result.getOSMWays().size() > 1)
+        //   throw new UnsupportedOperationException("Kann derzeit nur einen Weg als Ergebnis speichern");
         
-        if(result.getOSMWays().isEmpty())
+        if(result.getOSMWay().getWayComponents().isEmpty())
             throw new UnsupportedOperationException("Kann keine leeren Ergebnisse behandeln");
 
         // Lade ersten Weg aus Result (muss später durch einen Loop o.ä. ersetzt werden)
-        List<OSMNode> currentWay = result.getOSMWays().get(0).getWayComponents();
+        List<OSMNode> currentWay = result.getOSMWay().getWayComponents();
         
         // Iteriere durch alle Nodes
         for (Iterator<OSMNode> it = currentWay.iterator(); it.hasNext();) {
