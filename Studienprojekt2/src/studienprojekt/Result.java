@@ -9,22 +9,21 @@ public class Result {
     public static int counter = 1;
     private int id;
     private String name;
-    private List<OSMWay> ways;
+    private OSMWay way;
     private SpaceUsageRule spaceUsageRule;
     private OSMCoordinate osmCoordinate;
     
     public Result() {
         this.id = counter++;
         this.name = "unnamed";
-        this.ways = new ArrayList();
     }
     
-    public void setOSMWays(List<OSMWay> ways) {
-        this.ways = ways;
+    public void setOSMWay(OSMWay way) {
+        this.way = way;
     }
     
-    public List<OSMWay> getOSMWays() {
-        return this.ways;
+    public OSMWay getOSMWay() {
+        return this.way;
     }
     
     public void setName(String name) {
