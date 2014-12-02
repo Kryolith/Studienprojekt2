@@ -184,7 +184,7 @@ public class OSMWay extends OSMElement
             Line2D.Double line = new Line2D.Double();
             line.setLine(point_1, point_2);
             
-            double currentDistance = line.ptSegDistSq(thisSurPoint);
+            double currentDistance = line.ptLineDist(thisSurPoint);
             double minDistance = currentDistance;
 
             for (int i=2; i < wayComponents.size()-1; i++)
@@ -205,9 +205,9 @@ public class OSMWay extends OSMElement
                 
                 line = new Line2D.Double();
                 line.setLine(point_1, point_2);
-                minDistance = (line.ptSegDistSq(thisSurPoint) < minDistance) ? line.ptSegDistSq(thisSurPoint) : minDistance;
+                minDistance = (line.ptLineDist(thisSurPoint) < minDistance) ? line.ptLineDist(thisSurPoint) : minDistance;
             }
-            return minDistance;   
+            return minDistance * 1000;   
         }
         
 	@Override
