@@ -20,13 +20,15 @@ public class RuleManager {
     
     private Map<String, Rule> rules;
     private RuleParser ruleParser;
+    private RuleHandler ruleHandler;
     
     public RuleManager() {
         this.rules = new HashMap();
         this.ruleParser = new RuleParser();
+        this.ruleHandler = new RuleHandler();
     }
     
-    public List<OSMWay> handle(OSMMap map, OSMCoordinate coordinate, SpaceUsageRule sur) throws Exception {
+    public OSMWay handle(OSMCoordinate coordinate, SpaceUsageRule sur) throws Exception {
         
         // SpaceUsageRule zu einzigartigen "Key" umwandeln
         String ruleFilename = getRuleFilenameFromSUR(sur);
@@ -36,24 +38,17 @@ public class RuleManager {
         
         if(rules.containsKey(ruleFilename)) {
             // Wenn ja lade diese aus der Map
-            // TESTAUSGABE:
-            System.out.println("rules.containesKey == TRUE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             rule = rules.get(ruleFilename);
         }else{
             // Ansonsten parse sie neu
             try {
                 rule = RuleParser.parseFile(new File("rules/" + ruleFilename));
-                System.out.println("Rule neu geparst !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");   
-                
             } catch(Exception e) {
-                System.out.println("Rule wurde nicht neu geparst !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println(e);
             }
         }
-         // TESTAUSGABE:
-        if  (rule != null)
-            System.out.println("Geparste Rule - Länge ihrer taglist: " + rule.sizeTagList()); 
         
-        return rule.handle(coordinate);
+        return ruleHandler.handle(rule, coordinate);
     }
     
     public String getRuleFilenameFromSUR(SpaceUsageRule sur) {
