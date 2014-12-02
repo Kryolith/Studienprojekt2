@@ -36,15 +36,22 @@ public class RuleManager {
         
         if(rules.containsKey(ruleFilename)) {
             // Wenn ja lade diese aus der Map
+            // TESTAUSGABE:
+            System.out.println("rules.containesKey == TRUE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             rule = rules.get(ruleFilename);
         }else{
             // Ansonsten parse sie neu
             try {
-            rule = RuleParser.parseFile(new File("rules/" + ruleFilename));
+                rule = RuleParser.parseFile(new File("rules/" + ruleFilename));
+                System.out.println("Rule neu geparst !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");   
+                
             } catch(Exception e) {
-                System.out.println(e);
+                System.out.println("Rule wurde nicht neu geparst !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             }
         }
+         // TESTAUSGABE:
+        if  (rule != null)
+            System.out.println("Geparste Rule - Länge ihrer taglist: " + rule.sizeTagList()); 
         
         return rule.handle(coordinate);
     }

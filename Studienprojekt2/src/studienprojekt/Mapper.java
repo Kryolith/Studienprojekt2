@@ -1,15 +1,12 @@
 package studienprojekt;
 
 import studienprojekt.rules.RuleManager;
-import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.xml.parsers.ParserConfigurationException;
-import org.xml.sax.SAXException;
 import studienprojekt.osm.OSMCoordinate;
-import studienprojekt.osm.OSMMap;
 import studienprojekt.osm.OSMParser;
+import studienprojekt.osm.OSMWay;
 
 public class Mapper {    
     
@@ -75,7 +72,7 @@ public class Mapper {
             result.setName(line.get(0));
             
             // Erstelle ein OSMCoordinate-Objekt mit den Koordinaten aus der Zeile
-            OSMCoordinate surCoordinate = new OSMCoordinate(Double.parseDouble(line.get(2)), Double.parseDouble(line.get(1)));
+            OSMCoordinate surCoordinate = new OSMCoordinate(Double.parseDouble(line.get(1)), Double.parseDouble(line.get(2)));
             
             // Setze Koordinaten im Ergebnisobjekt
             result.setOSMCoordinate(surCoordinate);
@@ -86,6 +83,7 @@ public class Mapper {
             // AUch zum Ergebnis-Objekt hinzufügen
             result.setSpaceUsageRule(currentSur);
             
+            /*
             // Erstelle OSMMap-Objekt, dass die Gegend um die Koordinaten beschreibt
             OSMMap areaToCheck = null;
                         
@@ -95,19 +93,24 @@ public class Mapper {
             } catch (ParserConfigurationException | SAXException | IOException ex) {
                 System.out.println(ex);
             }
+            */
             
             // Falls erfolgreich weiter (ansonsten sollte eh ein Fehler ausgegeben worden sein, evtl ist die Bedingung hier überflüssig?!?)
-            if(areaToCheck != null) {
+            //if(areaToCheck != null) {
                 try {
                     // Gib die aktuellen Daten an den RegelManager weiter und speicher die Rückgabe im result-Objekt
-                    result.setOSMWays(this.ruleManager.handle(areaToCheck, surCoordinate, currentSur));
+                    //Test:
+                    OSMWay resultWay = this.ruleManager.handle(surCoordinate, currentSur);
+                    System.out.println("ERMITTELTER Weg:\n " + resultWay);
+                    result.setOSMWay(resultWay);                   
+                   // result.setOSMWay(this.ruleManager.handle(surCoordinate, currentSur));
                 } catch (Exception ex) {
                     Logger.getLogger(Mapper.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
                 // Schlussendlich wird das Ergebnis noch abgespeichert über den OutfileHandler
                 ofh.saveData(result);
-            }
+            //}
         }        
     }
 }
