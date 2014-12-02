@@ -28,6 +28,8 @@ public class OutfileHandler {
         // Füge Name im Template ein
         tpl.replace("name", result.getName());
         
+       if (result.getOSMWay() == null)
+            System.out.println("result.getOSMWay is NULL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         //if(result.getOSMWays().size() > 1)
         //   throw new UnsupportedOperationException("Kann derzeit nur einen Weg als Ergebnis speichern");
         
