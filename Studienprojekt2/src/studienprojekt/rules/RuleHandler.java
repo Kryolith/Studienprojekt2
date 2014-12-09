@@ -53,8 +53,8 @@ public class RuleHandler {
         // Die Wege abfragen
         List<OSMWay> ways = map.getWays();
         
-        for(OSMWay way : ways)
-            System.out.println(way);
+        /*for(OSMWay way : ways)
+            System.out.println(way);*/
         
         // Die Wege nacheinander durchgehen, dabei direkt den höchstwertigen Weg speichern
         double max_value = 0;
@@ -105,7 +105,7 @@ public class RuleHandler {
             // Finale Wertung errechnen
             double value = keyMaxWeight * wayWeight;
             
-            
+            System.out.println("distance: " + distance + "\nweight: " + wayWeight + "\nvalue: " + value + "\n");
             
             // Direkt als besten weg setzen wenn ers ist
             if(value > max_value) {
@@ -122,7 +122,7 @@ public class RuleHandler {
         // Einmal als lineare Funktion
         return (distance >= range) ? 0 : -(distance / range) + 1;
         
-        // Einmal als SinusFunktion
-        //return (distance >= range) ? 0 : Math.sin(Math.PI * (distance / range));
+        // Einmal als cosinusFunktion
+        //return (distance >= range) ? 0 : Math.cos(Math.PI * (distance / range));
     }
 }
