@@ -105,6 +105,7 @@ public class Mapper {
                     result.setOSMWay(this.ruleManager.handle(surCoordinate, currentSur));
                 } catch (Exception ex) {
                     Logger.getLogger(Mapper.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println("Result konnte nicht gesetzt werden - in Mapper.java, Zeile 108!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 }
                 
                 // Schlussendlich wird das Ergebnis noch abgespeichert über den OutfileHandler
